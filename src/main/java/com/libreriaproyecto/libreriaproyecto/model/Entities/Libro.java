@@ -20,10 +20,7 @@ public class Libro {
     private int id;
     @Column(name = "titulo")
     private String titulo;
-    @Column(name = "precio")
-    private Double precio;
-    @Column(name = "stock")
-    private Integer stock;
+
     
     @ManyToOne
     @JoinColumn(name = "id_autor")
@@ -37,7 +34,14 @@ public class Libro {
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
-        this.precio = precio;
-        this.stock = stock;
+    }
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", autor=" + autor.getNombre() +
+                ", categoria=" + categoria.getNombre() +
+                '}';
     }
 }

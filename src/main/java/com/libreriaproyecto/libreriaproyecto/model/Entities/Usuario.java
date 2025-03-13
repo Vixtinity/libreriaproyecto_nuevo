@@ -28,12 +28,16 @@ public class Usuario {
     private String direccion;
     @Column(name = "telefono")
     private String telefono;
+    @Column(name = "rol")
+    private String rol;
 
-    public Usuario (String nombre, String email, String password, String direccion, String telefono){
+    public Usuario (String nombre, String email, String password, String direccion, String telefono, String rol){
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.rol = rol;
+        
     }
 }

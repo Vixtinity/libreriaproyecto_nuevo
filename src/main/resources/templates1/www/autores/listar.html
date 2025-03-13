@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div layout:fragment="MainBase">
+    <!-- Contenido principal -->
+    <div class="container">
+         
+        <section id="servicios">
+            <h2>Listado de Autores</h2>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>nacionalidad</th>
+                        <th>fecha_nacimiento</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr th:each="autor : ${autores}">
+                        <td>
+                            <a th:href="@{/autores/{id}(id=${autor.id})}">
+                                 <span th:text="${autor.id}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${autor.nombre}"></td>
+                        <td th:text="${autor.nacionalidad}"></td>
+                        <td th:text="${autor.fechaNacimiento}"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+</html>

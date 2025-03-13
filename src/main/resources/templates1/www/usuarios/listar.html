@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div layout:fragment="MainBase">
+    <!-- Contenido principal -->
+    <div class="container">
+         
+        <section id="servicios">
+            <h2>Listado de Usuarios</h2>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>nombre</th>
+                        <th>email</th>
+                        <th>password</th>
+                        <th>direccion</th>
+                        <th>telefono</th>
+
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td>
+                            <a th:href="@{/usuario/{id}(id=${usuario.id})}">
+                                 <span th:text="${libro.id}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td th:text="${usuario.password}"></td>
+                        <td th:text="${usuario.direccion}"></td>
+                        <td th:text="${usuario.telefono}"></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+</html>

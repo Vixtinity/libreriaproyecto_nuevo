@@ -74,9 +74,9 @@ public class DataInitializer implements CommandLineRunner {
 
         // Insertar usuarios
         List<Usuario> usuarios = Arrays.asList(
-            new Usuario("admin", "admin@example.com", "admin", "Calle A 123", "123456789"),
-            new Usuario("usuario", "usuario@example.com", "usuario", "Calle B 456", "987654321"),
-            new Usuario("Carlos García", "carlos@example.com", "qwerty", "Calle C 789", "456123789")
+            new Usuario("admin", "admin@example.com", "admin", "Calle A 123", "123456789","admin"),
+            new Usuario("usuario", "usuario@example.com", "usuario", "Calle B 456", "987654321","usuario"),
+            new Usuario("Carlos García", "carlos@example.com", "qwerty", "Calle C 789", "456123789","usuario")
         );
         usuarioService.saveAll(usuarios);
 

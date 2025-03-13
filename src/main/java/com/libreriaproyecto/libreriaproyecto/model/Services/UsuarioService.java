@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.UsuarioRepository;
-import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
-import com.libreriaproyecto.libreriaproyecto.model.Entities.Autor;
-import com.libreriaproyecto.libreriaproyecto.model.Repositories.*;
+
 
 @Service
 public class UsuarioService {

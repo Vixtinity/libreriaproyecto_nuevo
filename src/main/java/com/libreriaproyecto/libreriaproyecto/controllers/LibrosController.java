@@ -1,7 +1,6 @@
 package com.libreriaproyecto.libreriaproyecto.controllers;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,23 +11,31 @@ import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
 
 @Controller
 public class LibrosController {
-    @Autowired
-    private LibroService libroService;
+
+    private final LibroService libroService;
+
+    public LibrosController(LibroService libroService) {
+        this.libroService = libroService;
+    }
 
     @GetMapping("/libros")
     public String getLibros(Model modelo) {
-        List<Libro> libros = this.libroService.findAll();
+        List<Libro> libros = libroService.findAll();
         modelo.addAttribute("libros", libros);
-        return "/www/libros/listar";
+        return "libros/listar"; // Corrección de la ruta de la vista
     }
 
     @GetMapping("/libros/{id}")
-    public String getLibro(@PathVariable(value="id", required=false) Integer id, Model vista) {
+    public String getLibro(@PathVariable("id") Integer id, Model vista) {
         System.out.println("El libro es " + id);
-        Libro libro = this.libroService.findById(id);
-        System.out.println(libro);
+
+        Libro libro = libroService.findById(id);
+        if (libro == null) {
+            System.out.println("Libro no encontrado");
+            return "redirect:/libros"; // Redirige a la lista si el libro no existe
+        }
 
         vista.addAttribute("libro", libro);
-        return "/www/libros/detalle";
+        return "libros/detalle"; // Corrección de la ruta de la vista
     }
 }
