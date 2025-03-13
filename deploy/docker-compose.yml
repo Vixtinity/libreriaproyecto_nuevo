@@ -1,0 +1,14 @@
+version: '3'
+services: 
+  db:
+    container_name: libreriaBD
+    image: mariadb
+    environment:
+      MARIADB_USER: libreria
+      MARIADB_PASSWORD: pswlibreria
+      MARIADB_DATABASE: libreriaBD
+      MARIADB_ROOT_PASSWORD: 1234
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3310:3306"
