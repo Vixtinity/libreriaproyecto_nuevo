@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table (name = "categorias")
+@NoArgsConstructor
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

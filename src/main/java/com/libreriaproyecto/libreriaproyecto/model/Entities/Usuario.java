@@ -13,6 +13,7 @@ import lombok.*;
 @Table (name = "usuarios")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

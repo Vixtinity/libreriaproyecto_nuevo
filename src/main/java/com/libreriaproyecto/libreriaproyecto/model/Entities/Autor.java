@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table (name = "autores")
+@NoArgsConstructor
 public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +18,7 @@ public class Autor {
     private String nacionalidad;
     @Column(name = "fecha_nacimiento")
     private String fechaNacimiento;
-    
+
     public Autor(String nombre, String nacionalidad, String fechaNacimiento) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
