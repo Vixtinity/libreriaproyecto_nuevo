@@ -31,4 +31,12 @@ public class Libro {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+
+    public Libro(String titulo, Autor autor, Categoria categoria, double precio, int stock) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.stock = stock;
+    }
 }

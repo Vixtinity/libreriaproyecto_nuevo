@@ -27,4 +27,10 @@ public class AutorService {
     public Autor findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
+    public void saveAll(List<Autor> autores) {
+        repository.saveAll(autores);
+    }
+    public long count() {
+        return repository.count();
+    }
 }

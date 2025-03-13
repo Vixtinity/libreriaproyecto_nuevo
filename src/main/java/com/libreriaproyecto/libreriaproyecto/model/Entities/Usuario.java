@@ -27,4 +27,12 @@ public class Usuario {
     private String direccion;
     @Column(name = "telefono")
     private String telefono;
+
+    public Usuario (String nombre, String email, String password, String direccion, String telefono){
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
 }

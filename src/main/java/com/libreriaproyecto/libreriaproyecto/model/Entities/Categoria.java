@@ -16,4 +16,8 @@ public class Categoria {
     private int id;
     @Column(name = "nombre")
     private String nombre;
+
+    public Categoria(String nombre) {
+        this.nombre = nombre;
+    }
 }

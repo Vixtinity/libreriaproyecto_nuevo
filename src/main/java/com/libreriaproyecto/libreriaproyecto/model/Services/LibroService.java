@@ -30,4 +30,7 @@ public class LibroService {
     public Libro findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
+    public void saveAll(List<Libro> libros) {
+        repository.saveAll(libros);
+    }
 }
