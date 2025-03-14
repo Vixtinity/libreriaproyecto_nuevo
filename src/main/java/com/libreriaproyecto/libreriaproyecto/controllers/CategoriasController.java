@@ -19,7 +19,7 @@ public class CategoriasController {
     public String getCategorias(Model modelo) {
         List<Categoria> categorias = this.categoriaService.findAll();
         modelo.addAttribute("categorias", categorias);
-        return "/www/categorias/listar";
+        return "www/admin/index";
     }
 
     @GetMapping("/categorias/{id}")
@@ -29,6 +29,6 @@ public class CategoriasController {
         System.out.println(categoria);
 
         vista.addAttribute("categoria", categoria);
-        return "/www/categorias/detalle";
+        return "/www/admin/index";
     }
 }

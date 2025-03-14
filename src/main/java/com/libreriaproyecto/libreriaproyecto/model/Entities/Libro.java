@@ -30,7 +30,7 @@ public class Libro {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    public Libro(String titulo, Autor autor, Categoria categoria, double precio, int stock) {
+    public Libro(String titulo, Autor autor, Categoria categoria) {
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
