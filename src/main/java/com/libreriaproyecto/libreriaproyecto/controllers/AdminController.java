@@ -15,7 +15,7 @@ public class AdminController {
     @Autowired
     private LibroRepository libroRepository;
 
-    @GetMapping("/index")
+    @GetMapping("/admin")
     public String mostrarLibros(Model model) {
         List<Libro> libros = libroRepository.findAll();
         model.addAttribute("libros", libros);

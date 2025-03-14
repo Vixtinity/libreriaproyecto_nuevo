@@ -19,16 +19,6 @@ public class CategoriasController {
     public String getCategorias(Model modelo) {
         List<Categoria> categorias = this.categoriaService.findAll();
         modelo.addAttribute("categorias", categorias);
-        return "www/admin/index";
-    }
-
-    @GetMapping("/categorias/{id}")
-    public String getCategoria(@PathVariable(value="id", required=false) Integer id, Model vista) {
-        System.out.println("La categoría es " + id);
-        Categoria categoria = this.categoriaService.findById(id);
-        System.out.println(categoria);
-
-        vista.addAttribute("categoria", categoria);
-        return "/www/admin/index";
+        return "index";
     }
 }

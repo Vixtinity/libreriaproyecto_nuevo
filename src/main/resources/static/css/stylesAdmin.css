@@ -1,0 +1,39 @@
+/* Estilos para la tabla */
+table.striped {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+/* Estilo para las cabeceras de la tabla */
+table.striped th {
+    background-color: #6F4F28; /* Color marrón oscuro */
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Estilo para las celdas de la tabla */
+table.striped td {
+    background-color: #D2B48C; /* Color marrón claro */
+    color: #3E2723; /* Color marrón oscuro */
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #8B4513; /* Borde sutil entre las filas */
+}
+
+/* Estilo para las filas alternas */
+table.striped tr:nth-child(even) {
+    background-color: #C5A080; /* Color marrón medio para las filas pares */
+}
+
+/* Estilo para los enlaces dentro de la tabla */
+table.striped a {
+    text-decoration: none;
+    color: #3E2723; /* Color marrón oscuro */
+    font-weight: bold;
+}
+
+table.striped a:hover {
+    color: #6F4F28; /* Color marrón oscuro cuando el enlace es hover */
+}
