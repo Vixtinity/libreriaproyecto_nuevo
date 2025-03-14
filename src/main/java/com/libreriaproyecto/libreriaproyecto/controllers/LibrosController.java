@@ -22,7 +22,7 @@ public class LibrosController {
     public String getLibros(Model modelo) {
         List<Libro> libros = libroService.findAll();
         modelo.addAttribute("libros", libros);
-        return "libros/listar"; // Corrección de la ruta de la vista
+        return "libros/listar";
     }
 
     @GetMapping("/libros/{id}")
