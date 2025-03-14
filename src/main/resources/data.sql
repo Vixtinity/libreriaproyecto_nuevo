@@ -4,7 +4,7 @@
     INSERT INTO categorias (nombre)
     VALUES();
 
-    INSERT INTO libros (titulo, id_autor, id_categoria, precio, stock)
+    INSERT INTO libros (titulo, id_autor, id_categoria)
     VALUES();
 
     INSERT INTO usuarios (nombre, email, password, direccion, telefono, rol)
