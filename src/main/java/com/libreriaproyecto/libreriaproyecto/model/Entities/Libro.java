@@ -30,10 +30,14 @@ public class Libro {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    public Libro(String titulo, Autor autor, Categoria categoria) {
+    @Column(name = "precio")
+    private double precio;
+
+    public Libro(String titulo, Autor autor, Categoria categoria, double precio) {
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
+        this.precio = precio;
     }
     @Override
     public String toString() {
@@ -42,6 +46,7 @@ public class Libro {
                 ", titulo='" + titulo + '\'' +
                 ", autor=" + autor.getNombre() +
                 ", categoria=" + categoria.getNombre() +
+                ", precio=" + precio +
                 '}';
     }
 }

@@ -11,31 +11,25 @@ public class PagController {
     // Mapea la página de inicio
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "index"; // Vista de la página principal
     }
 
     // Mapea la página "About"
     @GetMapping("/about")
     public String about() {
-        return "about";
-    }
-
-    // Mapea la página de productos
-    @GetMapping("/products")
-    public String productos() {
-        return "products";
+        return "about"; // Vista de la página "About"
     }
 
     // Mapea la página "Store"
     @GetMapping("/store")
     public String store() {
-        return "store";
-}
-@GetMapping("/login")
-    public String login(Model model) {
-        // No llames al método login nuevamente aquí, ya que causará recursión infinita
-        return "login";  // Asegúrate de que el nombre de la vista sea correcto
+        return "store"; // Vista de la tienda
     }
-    
-    
+
+    // Mapea la página de login
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login"; // Vista de login
+    }
 }
+

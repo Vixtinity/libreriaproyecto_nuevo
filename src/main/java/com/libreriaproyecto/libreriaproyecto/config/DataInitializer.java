@@ -64,11 +64,11 @@ public class DataInitializer implements CommandLineRunner {
 
         // Insertar libros
         List<Libro> libros = Arrays.asList(
-            new Libro("Cien años de soledad", autores.get(0), categorias.get(0)),
-            new Libro("Harry Potter y la piedra filosofal", autores.get(1), categorias.get(3)),
-            new Libro("1984", autores.get(2), categorias.get(1)),
-            new Libro("La casa de los espíritus", autores.get(3), categorias.get(0)),
-            new Libro("El resplandor", autores.get(4), categorias.get(2))
+            new Libro("Cien años de soledad", autores.get(0), categorias.get(0), 9.99),
+            new Libro("Harry Potter y la piedra filosofal", autores.get(1), categorias.get(3), 8.50),
+            new Libro("1984", autores.get(2), categorias.get(1), 5.99),
+            new Libro("La casa de los fantasmas", autores.get(3), categorias.get(0), 15.39),
+            new Libro("El resplandor", autores.get(4), categorias.get(2), 10.99)
         );
         libroService.saveAll(libros);
 

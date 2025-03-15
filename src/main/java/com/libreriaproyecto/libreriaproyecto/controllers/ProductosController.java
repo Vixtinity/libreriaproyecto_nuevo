@@ -1,23 +1,26 @@
 package com.libreriaproyecto.libreriaproyecto.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import java.util.List;
-import com.libreriaproyecto.libreriaproyecto.model.Entities.Productos;
-import com.libreriaproyecto.libreriaproyecto.model.Services.ProductosService;
+
+import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
+import com.libreriaproyecto.libreriaproyecto.model.Repositories.LibroRepository;
 
 @Controller
 public class ProductosController {
 
     @Autowired
-    private ProductosService productService;
+    private LibroRepository libroRepository;
 
-    @GetMapping("/productos")
-    public String showProducts(Model model) {
-        List<Productos> productos = productService.getAllProducts(); // Corregido: Usar productService en lugar de productServices
-        model.addAttribute("productos", productos); // Añade los productos al modelo para pasarlos a la vista
-        return "productos"; // Nombre de la vista (productos.html)
+    // Mapea la página de productos
+    @GetMapping("/products")  // Cambié la ruta a "/products" para que no se solape con la raíz "/"
+    public String mostrarLibros(Model model) {
+        List<Libro> libros = libroRepository.findAll();  // Obtener todos los libros de la base de datos
+        model.addAttribute("libros", libros);  // Pasar la lista de libros al modelo
+        return "products";  // Vista de los productos
     }
 }

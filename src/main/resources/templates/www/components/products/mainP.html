@@ -1,56 +1,20 @@
 <main th:fragment="mainP">
-    <section class="page-section" th:each="producto : ${productos}">
-        <div class="container">
-            <div class="product-item">
-                <div class="product-item-title d-flex">
-                    <div class="bg-faded p-5 d-flex ms-auto rounded">
-                        <h2 class="section-heading mb-0">
-                            <span class="section-heading-upper" th:text="${producto.categoria}"></span>
-                            <span class="section-heading-lower" th:text="${producto.nombre}"></span>
-                        </h2>
+        <div class="container mt-4">
+            <h2 class="text-center">Lista de Libros</h2>
+            <div class="row">
+                <!-- Iterar sobre la lista de libros -->
+                <div class="col-md-4 mb-4" th:each="libro : ${libros}">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${libro.titulo}"></h5>
+                            <p class="card-text"><strong>Autor:</strong> <span th:text="${libro.autor.nombre}"></span></p>
+                            <p class="card-text"><strong>Precio:</strong> <span th:text="${libro.precio} + ' €'"></span></p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn-primary">Ver detalles</a>
+                        </div>
                     </div>
                 </div>
-                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-01.jpg" alt="..." />
-                <div class="product-item-description d-flex me-auto">
-                    <div class="bg-faded p-5 rounded"><p class="mb-0">We take pride in our work, and it shows. Every time you order a beverage from us, we guarantee that it will be an experience worth having. Whether it's our world famous Venezuelan Cappuccino, a refreshing iced herbal tea, or something as simple as a cup of speciality sourced black coffee, you will be coming back for more.</p></div>
-                </div>
             </div>
-        </div>
-    </section>
-    <section class="page-section">
-        <div class="container">
-            <div class="product-item">
-                <div class="product-item-title d-flex">
-                    <div class="bg-faded p-5 d-flex me-auto rounded">
-                        <h2 class="section-heading mb-0">
-                            <span class="section-heading-upper">Novela</span>
-                            <span class="section-heading-lower">Gabriel Garcia</span>
-                        </h2>
-                    </div>
-                </div>
-                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-02.jpg" alt="..." />
-                <div class="product-item-description d-flex ms-auto">
-                    <div class="bg-faded p-5 rounded"><p class="mb-0">Cien años de soledad trata un siglo en la vida de la familia Buendía, cuyo patriarca, José Arcadio Buendía, fundó el pueblo ficticio de Macondo, en Colombia. La novela es considerada una obra maestra de la literatura latinoamericana y uno de los ejemplos clásicos del realismo mágico.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="page-section">
-        <div class="container">
-            <div class="product-item">
-                <div class="product-item-title d-flex">
-                    <div class="bg-faded p-5 d-flex ms-auto rounded">
-                        <h2 class="section-heading mb-0">
-                            <span class="section-heading-upper">Fantasia y ciencia ficción</span>
-                            <span class="section-heading-lower">J.K Rowling</span>
-                        </h2>
-                    </div>
-                </div>
-                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-03.jpg" alt="..." />
-                <div class="product-item-description d-flex me-auto">
-                    <div class="bg-faded p-5 rounded"><p class="mb-0">Harry Potter y la piedra filosofal (título original en inglés: Harry Potter and the Philosopher’s Stone,1​ excepto en Estados Unidos, donde se tituló Harry Potter and the Sorcerer’s Stone), es el primer libro de la serie literaria Harry Potter, escrito por la autora británica J. K. Rowling entre 1990 y 1995. Publicado en el año 1997, supuso además el debut de Rowling como escritora profesional.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </div>  
 </main>

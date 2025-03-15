@@ -1,113 +1,115 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de Libros y Categorías</title>
-    <link href="css/stylesAdmin.css" rel="stylesheet" />
-</head>
-<body>
-    <div layout:fragment="MainBase">
-        <!-- Contenido principal -->
-        <div class="container">
-            <!-- Tabla de Libros -->
-            <section id="libros">
-                <h2>Listado de Libros</h2>
-                <table class="striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Titulo</th>
-                            <th>ID Autor</th>
-                            <th>ID Categoria</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="libro : ${libros}">
-                            <td>
-                                <a th:href="@{/libro/{id}(id=${libro.id})}">
-                                    <span th:text="${libro.id}"></span>
-                                </a>
-                            </td>
-                            <td th:text="${libro.titulo}"></td>
-                            <!-- Mostrar el ID del autor -->
-                            <td th:text="${libro.autor.id}"></td>
-                            <!-- Mostrar el ID de la categoría -->
-                            <td th:text="${libro.categoria.id}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Listado de Libros y Categorías</title>
+        <link href="css/stylesAdmin.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div layout:fragment="MainBase">
+            <!-- Contenido principal -->
+            <div class="container">
+                <!-- Tabla de Libros -->
+                <section id="libros">
+                    <h2>Listado de Libros</h2>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titulo</th>
+                                <th>ID Autor</th>
+                                <th>ID Categoria</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="libro : ${libros}">
+                                <td>
+                                    <a th:href="@{/libro/{id}(id=${libro.id})}">
+                                        <span th:text="${libro.id}"></span>
+                                    </a>
+                                </td>
+                                <td th:text="${libro.titulo}"></td>
+                                <!-- Mostrar el ID del autor -->
+                                <td th:text="${libro.autor.id}"></td>
+                                <!-- Mostrar el ID de la categoría -->
+                                <td th:text="${libro.categoria.id}"></td>
+                                <td th:text="${libro.precio}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
 
-            <!-- Tabla de Categorías -->
-            <section id="categorias">
-                <h2>Listado de Categorías</h2>
-                <table class="striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="categoria : ${categorias}">
-                            <td th:text="${categoria.id}"></td>
-                            <td th:text="${categoria.nombre}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+                <!-- Tabla de Categorías -->
+                <section id="categorias">
+                    <h2>Listado de Categorías</h2>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="categoria : ${categorias}">
+                                <td th:text="${categoria.id}"></td>
+                                <td th:text="${categoria.nombre}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
 
-    <section id="autores">
-        <h2>Listado de Autores</h2>
-        <table class="striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Fecha Nac</th>
-                    <th>Nacionalidad</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="autor : ${autores}">
-                    <td th:text="${autor.id}"></td> <!-- Corregir: autor.id en lugar de autores.id -->
-                    <td th:text="${autor.nombre}"></td> <!-- Corregir: autor.nombre en lugar de autores.nombre -->
-                    <td th:text="${autor.fechaNacimiento}"></td> <!-- Corregir: autor.fecha_nacimiento -->
-                    <td th:text="${autor.nacionalidad}"></td> <!-- Corregir: autor.nacionalidad y cambiar th de <th> a <td> -->
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <section id="autores">
+            <h2>Listado de Autores</h2>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Fecha Nac</th>
+                        <th>Nacionalidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="autor : ${autores}">
+                        <td th:text="${autor.id}"></td> <!-- Corregir: autor.id en lugar de autores.id -->
+                        <td th:text="${autor.nombre}"></td> <!-- Corregir: autor.nombre en lugar de autores.nombre -->
+                        <td th:text="${autor.fechaNacimiento}"></td> <!-- Corregir: autor.fecha_nacimiento -->
+                        <td th:text="${autor.nacionalidad}"></td> <!-- Corregir: autor.nacionalidad y cambiar th de <th> a <td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-    <section id="usuarios">
-        <h2>Listado de Usuarios</h2>
-        <table class="striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Direccion</th>
-                    <th>Email</th>
-                    <th>Nombre</th>
-                    <th>Contraseña</th>
-                    <th>Telefono</th>
-                    <th>Rol</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuario : ${usuarios}">
-                    <td th:text="${usuario.id}"></td> <!-- Corregir: autor.id en lugar de autores.id -->
-                    <td th:text="${usuario.direccion}"></td> <!-- Corregir: autor.nombre en lugar de autores.nombre -->
-                    <td th:text="${usuario.email}"></td> <!-- Corregir: autor.fecha_nacimiento -->
-                    <td th:text="${usuario.nombre}"></td>
-                    <td th:text="${usuario.password}"></td>
-                    <td th:text="${usuario.telefono}"></td>
-                    <td th:text="${usuario.rol}"></td> <!-- Corregir: autor.nacionalidad y cambiar th de <th> a <td> -->
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    
-</div>
-</div>
-</body>
-</html>
+        <section id="usuarios">
+            <h2>Listado de Usuarios</h2>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Direccion</th>
+                        <th>Email</th>
+                        <th>Nombre</th>
+                        <th>Contraseña</th>
+                        <th>Telefono</th>
+                        <th>Rol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id}"></td> <!-- Corregir: autor.id en lugar de autores.id -->
+                        <td th:text="${usuario.direccion}"></td> <!-- Corregir: autor.nombre en lugar de autores.nombre -->
+                        <td th:text="${usuario.email}"></td> <!-- Corregir: autor.fecha_nacimiento -->
+                        <td th:text="${usuario.nombre}"></td>
+                        <td th:text="${usuario.password}"></td>
+                        <td th:text="${usuario.telefono}"></td>
+                        <td th:text="${usuario.rol}"></td> <!-- Corregir: autor.nacionalidad y cambiar th de <th> a <td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+    </div>
+    </div>
+    </body>
+    </html>
