@@ -7,9 +7,7 @@
     </head>
     <body>
         <div layout:fragment="MainBase">
-            <!-- Contenido principal -->
             <div class="container">
-                <!-- Tabla de Libros -->
                 <section id="libros">
                     <h2>Listado de Libros</h2>
                     <table class="striped">
@@ -30,17 +28,13 @@
                                     </a>
                                 </td>
                                 <td th:text="${libro.titulo}"></td>
-                                <!-- Mostrar el ID del autor -->
                                 <td th:text="${libro.autor.id}"></td>
-                                <!-- Mostrar el ID de la categoría -->
                                 <td th:text="${libro.categoria.id}"></td>
                                 <td th:text="${libro.precio}"></td>
                             </tr>
                         </tbody>
                     </table>
                 </section>
-
-                <!-- Tabla de Categorías -->
                 <section id="categorias">
                     <h2>Listado de Categorías</h2>
                     <table class="striped">
@@ -72,10 +66,10 @@
                 </thead>
                 <tbody>
                     <tr th:each="autor : ${autores}">
-                        <td th:text="${autor.id}"></td> <!-- Corregir: autor.id en lugar de autores.id -->
-                        <td th:text="${autor.nombre}"></td> <!-- Corregir: autor.nombre en lugar de autores.nombre -->
-                        <td th:text="${autor.fechaNacimiento}"></td> <!-- Corregir: autor.fecha_nacimiento -->
-                        <td th:text="${autor.nacionalidad}"></td> <!-- Corregir: autor.nacionalidad y cambiar th de <th> a <td> -->
+                        <td th:text="${autor.id}"></td> 
+                        <td th:text="${autor.nombre}"></td>
+                        <td th:text="${autor.fechaNacimiento}"></td>
+                        <td th:text="${autor.nacionalidad}"></td>
                     </tr>
                 </tbody>
             </table>
@@ -97,13 +91,13 @@
                 </thead>
                 <tbody>
                     <tr th:each="usuario : ${usuarios}">
-                        <td th:text="${usuario.id}"></td> <!-- Corregir: autor.id en lugar de autores.id -->
-                        <td th:text="${usuario.direccion}"></td> <!-- Corregir: autor.nombre en lugar de autores.nombre -->
-                        <td th:text="${usuario.email}"></td> <!-- Corregir: autor.fecha_nacimiento -->
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.direccion}"></td> 
+                        <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.nombre}"></td>
                         <td th:text="${usuario.password}"></td>
                         <td th:text="${usuario.telefono}"></td>
-                        <td th:text="${usuario.rol}"></td> <!-- Corregir: autor.nacionalidad y cambiar th de <th> a <td> -->
+                        <td th:text="${usuario.rol}"></td>
                     </tr>
                 </tbody>
             </table>
