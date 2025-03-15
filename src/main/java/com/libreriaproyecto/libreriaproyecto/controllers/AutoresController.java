@@ -17,19 +17,12 @@ import com.libreriaproyecto.libreriaproyecto.model.Entities.Autor;
 public class AutoresController {
     @Autowired
     private AutorService autorService;
-
-    @GetMapping("autores")
-    public String getAutores(Model modelo) {
-        List<Autor> autores = this.autorService.findAll();
-        modelo.addAttribute("autores", autores);
-        return "/www/autores/listar";
-    }
         @GetMapping("/eliminar/{id}")
     public String eliminarAutor(@PathVariable Integer id) {
         autorService.eliminarAutor(id);
         return "redirect:/admin";
     }
-    @GetMapping("/autores/{id}")
+    @GetMapping("/autor/{id}")
     public String getAutor(@PathVariable(value="id", required=false) Integer id, Model vista) {
         System.out.println("El autor es " + id);
         Autor autor = this.autorService.findById(id);
