@@ -26,6 +26,10 @@ public class CategoriaService {
     public Categoria findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
+    public void eliminarCategoria(Integer id) {
+        repository.deleteById(id);
+    }
+
         public void saveAll(List<Categoria> categorias) {
         repository.saveAll(categorias);
     }

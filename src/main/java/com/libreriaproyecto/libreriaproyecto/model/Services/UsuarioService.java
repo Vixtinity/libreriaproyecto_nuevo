@@ -28,6 +28,10 @@ public class UsuarioService {
     public Usuario getId(Integer id){
         return this.repository.findById(id).orElse(null);
     }
+        public void eliminarUsuario(Integer id) {
+        repository.deleteById(id);
+    }
+
         public void saveAll(List<Usuario> usuarios) {
         repository.saveAll(usuarios);
     }

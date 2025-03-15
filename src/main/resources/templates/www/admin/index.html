@@ -1,58 +1,62 @@
-    <!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Listado de Libros y Categorías</title>
-        <link href="css/stylesAdmin.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div layout:fragment="MainBase">
-            <div class="container">
-                <section id="libros">
-                    <h2>Listado de Libros</h2>
-                    <table class="striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Titulo</th>
-                                <th>ID Autor</th>
-                                <th>ID Categoria</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="libro : ${libros}">
-                                <td>
-                                    <a th:href="@{/libro/{id}(id=${libro.id})}">
-                                        <span th:text="${libro.id}"></span>
-                                    </a>
-                                </td>
-                                <td th:text="${libro.titulo}"></td>
-                                <td th:text="${libro.autor.id}"></td>
-                                <td th:text="${libro.categoria.id}"></td>
-                                <td th:text="${libro.precio}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-                <section id="categorias">
-                    <h2>Listado de Categorías</h2>
-                    <table class="striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="categoria : ${categorias}">
-                                <td th:text="${categoria.id}"></td>
-                                <td th:text="${categoria.nombre}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
+<div layout:fragment="MainBase">
+    <div class="container">
+        
+        <!-- Tabla de Libros -->
+        <section id="libros">
+            <h2>Listado de Libros</h2>
+            <a th:href="@{/libro/nuevo}">Añadir Libro</a>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>ID Autor</th>
+                        <th>ID Categoria</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="libro : ${libros}">
+                        <td th:text="${libro.id}"></td>
+                        <td th:text="${libro.titulo}"></td>
+                        <td th:text="${libro.autor.id}"></td>
+                        <td th:text="${libro.categoria.id}"></td>
+                        <td th:text="${libro.precio}"></td>
+                        <td>
+                            <a th:href="@{/libro/editar/{id}(id=${libro.id})}">Editar</a>
+                            <a th:href="@{/libro/eliminar/{id}(id=${libro.id})}" onclick="return confirm('¿Seguro que deseas eliminar este libro?');">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Tabla de Categorías -->
+        <section id="categorias">
+            <h2>Listado de Categorías</h2>
+            <a th:href="@{/categoria/nueva}">Añadir Categoría</a>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.id}"></td>
+                        <td th:text="${categoria.nombre}"></td>
+                        <td>
+                            <a th:href="@{/categoria/editar/{id}(id=${categoria.id})}">Editar</a>
+                            <a th:href="@{/categoria/eliminar/{id}(id=${categoria.id})}" onclick="return confirm('¿Seguro que deseas eliminar esta categoría?');">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
         <section id="autores">
             <h2>Listado de Autores</h2>
             <table class="striped">
@@ -62,6 +66,7 @@
                         <th>Nombre</th>
                         <th>Fecha Nac</th>
                         <th>Nacionalidad</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,11 +75,14 @@
                         <td th:text="${autor.nombre}"></td>
                         <td th:text="${autor.fechaNacimiento}"></td>
                         <td th:text="${autor.nacionalidad}"></td>
+                        <td>
+                            <a th:href="@{/autor/editar/{id}(id=${autor.id})}">Editar</a>
+                            <a th:href="@{/autor/eliminar/{id}(id=${autor.id})}" onclick="return confirm('¿Seguro que deseas eliminar este autor?');">Eliminar</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </section>
-
         <section id="usuarios">
             <h2>Listado de Usuarios</h2>
             <table class="striped">
@@ -87,6 +95,7 @@
                         <th>Contraseña</th>
                         <th>Telefono</th>
                         <th>Rol</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,12 +107,16 @@
                         <td th:text="${usuario.password}"></td>
                         <td th:text="${usuario.telefono}"></td>
                         <td th:text="${usuario.rol}"></td>
+                        <td>
+                            <a th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
+                            <a th:href="@{/usuario/eliminar/{id}(id=${usuario.id})}">Eliminar</a>
+                        </td>
                     </tr>
+                    
                 </tbody>
             </table>
         </section>
         
     </div>
     </div>
-    </body>
-    </html>
+</div>

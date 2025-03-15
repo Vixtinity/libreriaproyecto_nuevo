@@ -6,15 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.*;
+import com.libreriaproyecto.libreriaproyecto.model.Services.LibroService;
 
 @Controller
+@RequestMapping("/libro")
 public class LibrosController {
 
     @Autowired
     private LibroRepository libroRepository;
-
+        @Autowired
+    private LibroService libroService;
+        @GetMapping("eliminar/{id}")
+    public String eliminarLibro(@PathVariable Integer id) {
+        libroService.eliminarLibro(id);
+        return "redirect:/admin";
+    }
     @GetMapping("/libros")
     public String mostrarLibros(Model model) {
         List<Libro> libros = libroRepository.findAll(); // Esto obtiene todos los libros desde la base de datos

@@ -1,4 +1,10 @@
 package com.libreriaproyecto.libreriaproyecto.model.Entities;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.libreriaproyecto.libreriaproyecto.model.Services.LibroService;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +45,7 @@ public class Libro {
         this.categoria = categoria;
         this.precio = precio;
     }
+    
     @Override
     public String toString() {
         return "Libro{" +

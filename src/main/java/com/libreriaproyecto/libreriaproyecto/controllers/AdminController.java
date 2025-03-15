@@ -30,7 +30,7 @@ public class AdminController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
+    
     @GetMapping("/admin")
     public String adminDashboard(Model model) {
         List<Libro> libros = libroRepository.findAll();

@@ -1,7 +1,6 @@
 package com.libreriaproyecto.libreriaproyecto.model.Services;
 
 import org.springframework.stereotype.Service;
-
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.LibroRepository;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
 
@@ -13,6 +12,10 @@ public class LibroService {
 
     public LibroService(LibroRepository repository) {
         this.repository = repository;
+    }
+
+    public void eliminarLibro(Integer id) {
+        repository.deleteById(id);
     }
 
     public List<Libro> findAll() {
@@ -30,6 +33,7 @@ public class LibroService {
     public Libro findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
+
     public void saveAll(List<Libro> libros) {
         repository.saveAll(libros);
     }

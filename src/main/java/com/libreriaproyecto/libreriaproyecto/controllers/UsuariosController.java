@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.libreriaproyecto.libreriaproyecto.model.Services.LibroService;
 import com.libreriaproyecto.libreriaproyecto.model.Services.UsuarioService;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
 
@@ -15,11 +16,17 @@ public class UsuariosController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/usuarios")
+    @GetMapping("/usuario")
     public String getUsuarios(Model modelo) {
         List<Usuario> usuarios = this.usuarioService.getAll();
         modelo.addAttribute("usuarios", usuarios);
         return "/www/usuarios/listar";
+    }
+
+        @GetMapping("/eliminar/{id}")
+    public String eliminarUsuario(@PathVariable Integer id) {
+        usuarioService.eliminarUsuario(id);
+        return "redirect:/admin";
     }
 
     @GetMapping("/usuarios/{id}")
