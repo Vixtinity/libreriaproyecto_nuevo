@@ -206,6 +206,26 @@
             </tbody>
         </table>
     </section>
+    <!-- Modal para crear Categoria-->
+<div class="modal fade" id="crearCategoriaModal" tabindex="-1" aria-labelledby="crearCategoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearCategoriaModalLabel">Crear Categoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/categoria/crear}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="crearNombre" class="form-label">Categoria</label>
+                        <input type="text" class="form-control" id="crearNombre" name="nombre" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Libro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--============================================================================================================================================ -->
 <!--AUTORES -->
 <!--============================================================================================================================================ -->
