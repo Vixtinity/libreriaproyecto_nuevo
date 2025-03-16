@@ -21,7 +21,7 @@ public class UsuariosController {
     @Autowired
     private UsuarioService usuarioService;
 
-        @GetMapping("usuario/eliminar/{id}")
+        @GetMapping("eliminar/{id}")
     public String eliminarUsuario(@PathVariable Integer id) {
         usuarioService.eliminarUsuario(id);
         return "redirect:/admin";
