@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.UsuarioRepository;
+import com.libreriaproyecto.libreriaproyecto.model.Entities.Categoria;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
 
 @Service
@@ -13,13 +14,17 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> getAll() {
-        return this.usuarioRepository.findAll();  // Utilizar el repositorio inyectado
+    public List<Usuario> findAll() {
+        return usuarioRepository.findAll();
     }
 
     public void create(Usuario usuario) {
         this.usuarioRepository.save(usuario);  // Utilizar el repositorio inyectado
     }
+        public void actualizar(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
 
     public void delete(Integer id) {
         this.usuarioRepository.deleteById(id);  // Utilizar el repositorio inyectado

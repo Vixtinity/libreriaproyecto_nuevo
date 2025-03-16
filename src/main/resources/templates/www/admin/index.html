@@ -109,11 +109,12 @@
                     <td th:text="${libro.precio}"></td>
                     <td>
                         <button type="button" class="btn btn-warning edit-btn"
-                            th:attr="data-id=${libro.id}, data-titulo=${libro.titulo}, 
-                            data-autor=${libro.autor.id}, data-categoria=${libro.categoria.id},
-                            data-precio=${libro.precio}" data-bs-toggle="modal" data-bs-target="#editModal">
-                            Editar
-                        </button>
+                        th:attr="data-id=${libro.id}, data-titulo=${libro.titulo}, 
+                        data-autor=${libro.autor.id}, data-categoria=${libro.categoria.id},
+                        data-precio=${libro.precio}" data-bs-toggle="modal" data-bs-target="#editModal">
+                        Editar
+                    </button>
+                    
                         <a th:href="@{/libro/eliminar/{id}(id=${libro.id})}" class="btn btn-danger"
                             onclick="return confirm('¿Seguro que deseas eliminar este libro?');">
                             Eliminar
@@ -156,62 +157,194 @@
         </table>
     </section>
 
-    <section id="autores" class="container mt-4">
-    <h2>Listado de Autores</h2>
-    <a th:href="@{/autor/nuevo}" class="btn btn-success mb-2">Añadir Autor</a>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Fecha Nac.</th>
-                <th>Nacionalidad</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="autor : ${autores}">
-                <td th:text="${autor.id}"></td> 
-                <td th:text="${autor.nombre}"></td>
-                <td th:text="${autor.fechaNacimiento}"></td>
-                <td th:text="${autor.nacionalidad}"></td>
-                <td>
-                    <button type="button" class="btn btn-warning edit-btn"
-                        th:attr="data-id=${autor.id}, data-nombre=${autor.nombre}, 
-                        data-fechaNacimiento=${autor.fechaNacimiento}, data-nacionalidad=${autor.nacionalidad}"
-                        data-bs-toggle="modal" data-bs-target="#editAutorModal">
-                        Actualizar
-                    </button>
-                    <a th:href="@{/autor/eliminar/{id}(id=${autor.id})}" class="btn btn-danger"
-                        onclick="return confirm('¿Seguro que deseas eliminar este autor?');">
-                        Eliminar
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+    <section id="autor">
+        <h2>Listado de Autores</h2>
+        <a th:href="@{/autor/nueva}" class="btn btn-success">Añadir Autor</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Nacionalidad</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="autor : ${autores}">
+                    <td th:text="${autor.id}"></td>
+                    <td th:text="${autor.fechaNacimiento}"></td>
+                    <td th:text="${autor.nacionalidad}"></td>
+                    <td th:text="${autor.nombre}"></td>
+                    <td>
+                        <button type="button" class="btn btn-warning edit-autor-btn"
+                            th:attr="data-id=${autor.id}, data-nombre=${autor.nombre}" 
+                            data-bs-toggle="modal" data-bs-target="#editAutorModal">
+                            Editar
+                        </button>
+                        <a th:href="@{/autor/eliminar/{id}(id=${autor.id})}" class="btn btn-danger"
+                            onclick="return confirm('¿Seguro que deseas eliminar este autor?');">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="autor">
+        <h2>Listado de Autores</h2>
+        <a th:href="@{/autor/nueva}" class="btn btn-success">Añadir Autor</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Direccion</th>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Password</th>
+                    <th>Tipo de usuario</th>
+                    <th>Numero de telefono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.id}"></td>
+                    <td th:text="${usuario.direccion}"></td>
+                    <td th:text="${usuario.email}"></td>
+                    <td th:text="${usuario.nombre}"></td>
+                    <td th:text="${usuario.password}"></td>
+                    <td th:text="${usuario.rol}"></td>
+                    <td th:text="${usuario.telefono}"></td>
+                    <td>
+                        <button type="button" class="btn btn-warning edit-usuario-btn"
+                            th:attr="data-id=${usuario.id}, data-nombre=${usuario.nombre}" 
+                            data-bs-toggle="modal" data-bs-target="#editUsuarioModal">
+                            Editar
+                        </button>
+                        <a th:href="@{/usuario/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger"
+                            onclick="return confirm('¿Seguro que deseas eliminar este autor?');">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+    </section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".edit-btn").forEach(button => {
-                button.addEventListener("click", function () {
-                    document.getElementById("editId").value = this.getAttribute("data-id");
-                    document.getElementById("editTitulo").value = this.getAttribute("data-titulo");
-                    document.getElementById("editAutor").value = this.getAttribute("data-autor");
-                    document.getElementById("editCategoria").value = this.getAttribute("data-categoria");
-                    document.getElementById("editPrecio").value = this.getAttribute("data-precio");
-                });
-            });
-            document.querySelectorAll(".edit-categoria-btn").forEach(button => {
-                button.addEventListener("click", function () {
-                    document.getElementById("editCategoriaId").value = this.getAttribute("data-id");
-                    document.getElementById("editCategoriaNombre").value = this.getAttribute("data-nombre");
-                });
-            });
+
+    <!-- Modal para editar Usuario -->
+<div class="modal fade" id="editUsuarioModal" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUsuarioModalLabel">Editar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para editar los datos del usuario -->
+                <form th:action="@{/usuario/actualizar}" method="post">
+                    <div class="mb-3">
+                        <label for="editDireccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="editDireccion" name="direccion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="editNombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="editPassword" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editRol" class="form-label">Rol</label>
+                        <select class="form-select" id="editRol" name="rol" required>
+                            <option value="USER">Usuario</option>
+                            <option value="ADMIN">Administrador</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTelefono" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="editTelefono" name="telefono" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+<!-- Modal para Editar Autor -->
+<div class="modal fade" id="editAutorModal" tabindex="-1" aria-labelledby="editAutorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editAutorModalLabel">Editar Autor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editAutorForm" th:action="@{/autor/actualizar}" method="post">
+                    <input type="hidden" id="editAutorId" name="id">
+                    <div class="mb-3">
+                        <label for="editAutorNombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="editAutorNombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editAutorFecha" class="form-label">Fecha de Nacimiento:</label>
+                        <input type="date" class="form-control" id="editAutorFecha" name="fechaNacimiento" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editAutorNacionalidad" class="form-label">Nacionalidad:</label>
+                        <input type="text" class="form-control" id="editAutorNacionalidad" name="nacionalidad" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Handling modal form population for books, categories, authors, and users
+    document.querySelectorAll("[data-bs-toggle='modal']").forEach(button => {
+        button.addEventListener("click", function () {
+            const modalId = this.getAttribute("data-bs-target").substring(1); // Remove "#" to get the modal ID
+            const modal = document.getElementById(modalId);
+
+            // Handle different modal types based on the modal ID
+            if (modalId === "editModal") { // Book edit modal
+                document.getElementById("editId").value = this.getAttribute("data-id");
+                document.getElementById("editTitulo").value = this.getAttribute("data-titulo");
+                document.getElementById("editAutor").value = this.getAttribute("data-autor");
+                document.getElementById("editCategoria").value = this.getAttribute("data-categoria");
+                document.getElementById("editPrecio").value = this.getAttribute("data-precio");
+            } else if (modalId === "editCategoriaModal") { // Category edit modal
+                document.getElementById("editCategoriaId").value = this.getAttribute("data-id");
+                document.getElementById("editCategoriaNombre").value = this.getAttribute("data-nombre");
+            } else if (modalId === "editAutorModal") { // Author edit modal
+                document.getElementById("editAutorId").value = this.getAttribute("data-id");
+                document.getElementById("editAutorNombre").value = this.getAttribute("data-nombre");
+                document.getElementById("editAutorFecha").value = this.getAttribute("data-fechaNacimiento");
+                document.getElementById("editAutorNacionalidad").value = this.getAttribute("data-nacionalidad");
+            } else if (modalId === "editUsuarioModal") { // User edit modal
+                document.getElementById("editUsuarioId").value = this.getAttribute("data-id");
+                document.getElementById("editDireccion").value = this.getAttribute("data-direccion");
+                document.getElementById("editEmail").value = this.getAttribute("data-email");
+                document.getElementById("editNombre").value = this.getAttribute("data-nombre");
+                document.getElementById("editPassword").value = this.getAttribute("data-password");
+                document.getElementById("editRol").value = this.getAttribute("data-rol");
+                document.getElementById("editTelefono").value = this.getAttribute("data-telefono");
+            }
         });
+    });
+});
 
-    </script>
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

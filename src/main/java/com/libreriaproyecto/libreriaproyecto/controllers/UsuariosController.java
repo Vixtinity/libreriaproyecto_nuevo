@@ -5,37 +5,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.libreriaproyecto.libreriaproyecto.model.Services.LibroService;
 import com.libreriaproyecto.libreriaproyecto.model.Services.UsuarioService;
+import com.libreriaproyecto.libreriaproyecto.model.Entities.Categoria;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
 
 @Controller
+@RequestMapping("/usuario")
 public class UsuariosController {
     @Autowired
     private UsuarioService usuarioService;
-
-    @GetMapping("/usuarios")
-    public String getUsuarios(Model modelo) {
-        List<Usuario> usuarios = this.usuarioService.getAll();
-        modelo.addAttribute("usuarios", usuarios);
-        return "/www/usuarios/listar";
-    }
 
         @GetMapping("usuario/eliminar/{id}")
     public String eliminarUsuario(@PathVariable Integer id) {
         usuarioService.eliminarUsuario(id);
         return "redirect:/admin";
     }
+    @GetMapping("/categorias")
+    public String getUsuarios(Model modelo) {
+        List<Usuario> usuario = this.usuarioService.findAll();
+        modelo.addAttribute("usuario", usuario);
+        return "index";
+    }
 
-    @GetMapping("/usuarios/{id}")
-    public String getUsuario(@PathVariable(value="id", required=false) Integer id, Model vista) {
-        System.out.println("El usuario es " + id);
-        Usuario usuario = this.usuarioService.getId(id);
-        System.out.println(usuario);
-
-        vista.addAttribute("usuario", usuario);
-        return "/www/usuarios/detalle";
+        @PostMapping("/actualizar")
+    public String actualizarUsuario(@ModelAttribute Usuario usuario) {
+        usuarioService.actualizar(usuario);
+        return "redirect:/admin";
     }
 }
