@@ -1,39 +1,150 @@
-/* Estilos para la tabla */
-table.striped {
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado de la página */
+h2 {
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los formularios */
+form {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo de las tablas */
+table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-/* Estilo para las cabeceras de la tabla */
-table.striped th {
-    background-color: #6F4F28; /* Color marrón oscuro */
-    color: white;
-    padding: 10px;
+table th, table td {
+    padding: 12px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-/* Estilo para las celdas de la tabla */
-table.striped td {
-    background-color: #D2B48C; /* Color marrón claro */
-    color: #3E2723; /* Color marrón oscuro */
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #8B4513; /* Borde sutil entre las filas */
+table th {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Estilo para las filas alternas */
-table.striped tr:nth-child(even) {
-    background-color: #C5A080; /* Color marrón medio para las filas pares */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-/* Estilo para los enlaces dentro de la tabla */
-table.striped a {
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Enlaces de acción */
+a {
+    color: #007BFF;
     text-decoration: none;
-    color: #3E2723; /* Color marrón oscuro */
-    font-weight: bold;
+    margin-right: 10px;
 }
 
-table.striped a:hover {
-    color: #6F4F28; /* Color marrón oscuro cuando el enlace es hover */
+a:hover {
+    text-decoration: underline;
 }
+
+/* Botones de acción */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los botones de eliminar con confirmación */
+a[onclick] {
+    background-color: #FF4C4C;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+a[onclick]:hover {
+    background-color: #e63946;
+}
+
+/* Secciones */
+section {
+    margin-bottom: 40px;
+}
+
+/* Estilos para el contenedor de las tablas */
+table.striped {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.striped th {
+    background-color: #f0f0f0;
+}
+
+.striped td {
+    background-color: #fff;
+}
+
+.striped td:hover {
+    background-color: #f9f9f9;
+}
+

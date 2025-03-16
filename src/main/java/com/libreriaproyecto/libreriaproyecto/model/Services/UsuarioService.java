@@ -7,32 +7,38 @@ import org.springframework.stereotype.Service;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.UsuarioRepository;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
 
-
 @Service
 public class UsuarioService {
+
     @Autowired
-    private UsuarioRepository repository;
+    private UsuarioRepository usuarioRepository;
 
     public List<Usuario> getAll() {
-        return this.repository.findAll();
+        return this.usuarioRepository.findAll();  // Utilizar el repositorio inyectado
     }
 
-    public void create(Usuario usuario){
-        this.repository.save(usuario);
+    public void create(Usuario usuario) {
+        this.usuarioRepository.save(usuario);  // Utilizar el repositorio inyectado
     }
 
-    public void delete(Integer id){
-        this.repository.deleteById(id);
+    public void delete(Integer id) {
+        this.usuarioRepository.deleteById(id);  // Utilizar el repositorio inyectado
     }
 
-    public Usuario getId(Integer id){
-        return this.repository.findById(id).orElse(null);
-    }
-        public void eliminarUsuario(Integer id) {
-        repository.deleteById(id);
+    public Usuario getId(Integer id) {
+        return this.usuarioRepository.findById(id).orElse(null);  // Utilizar el repositorio inyectado
     }
 
-        public void saveAll(List<Usuario> usuarios) {
-        repository.saveAll(usuarios);
+    public void eliminarUsuario(Integer id) {
+        usuarioRepository.deleteById(id);  // Utilizar el repositorio inyectado
+    }
+
+    public void saveAll(List<Usuario> usuarios) {
+        usuarioRepository.saveAll(usuarios);  // Utilizar el repositorio inyectado
+    }
+
+    // Método para buscar usuario por nombre
+    public Usuario findByNombre(String nombre) {
+        return usuarioRepository.findByNombre(nombre);  // Llama al repositorio para buscar el usuario
     }
 }

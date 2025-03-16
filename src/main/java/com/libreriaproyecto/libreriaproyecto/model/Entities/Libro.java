@@ -45,15 +45,4 @@ public class Libro {
         this.categoria = categoria;
         this.precio = precio;
     }
-    
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", autor=" + autor.getNombre() +
-                ", categoria=" + categoria.getNombre() +
-                ", precio=" + precio +
-                '}';
-    }
 }

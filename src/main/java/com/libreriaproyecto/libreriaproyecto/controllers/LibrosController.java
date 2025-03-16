@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
@@ -24,6 +26,12 @@ public class LibrosController {
         @GetMapping("eliminar/{id}")
     public String eliminarLibro(@PathVariable Integer id) {
         libroService.eliminarLibro(id);
+        return "redirect:/admin";
+    }
+    
+    @PostMapping("/actualizar")
+    public String actualizarLibro(@ModelAttribute Libro libro) {
+        libroService.actualizar(libro);
         return "redirect:/admin";
     }
     @GetMapping("/libros")

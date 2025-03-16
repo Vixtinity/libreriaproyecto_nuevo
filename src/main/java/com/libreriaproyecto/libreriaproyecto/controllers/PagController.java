@@ -25,11 +25,5 @@ public class PagController {
     public String store() {
         return "store"; // Vista de la tienda
     }
-
-    // Mapea la página de login
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login"; // Vista de login
-    }
 }
 

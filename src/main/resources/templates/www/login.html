@@ -22,21 +22,17 @@
   <div class="main">
     <div class="col-md-6 col-sm-12">
       <div class="login-form">
-        <form action="/login" method="get">
+        <form action="/login" method="POST">
           <div class="form-group">
-            <label>Usuario</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Nombre de Usuario" required>
+              <label>Usuario</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de Usuario" required>
           </div>
           <div class="form-group">
-            <label>Contraseña</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+              <label>Contraseña</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
           </div>
-          <button type="submit" class="btn btn-black">Login</button>
-          <button type="submit" class="btn btn-secondary">Register</button>
-        </form>
-        <!-- Mostrar mensaje de error -->
-        <div th:if="${error}" class="alert alert-danger">
-          <p th:text="${error}"></p>
+          <button type="submit" class="btn btn-black">Acceder</button>
+      </form>
         </div>
       </div>
     </div>

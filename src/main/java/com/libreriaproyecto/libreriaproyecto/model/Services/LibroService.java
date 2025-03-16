@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class LibroService {
+    
     private final LibroRepository repository;
 
     public LibroService(LibroRepository repository) {
@@ -16,6 +17,9 @@ public class LibroService {
 
     public void eliminarLibro(Integer id) {
         repository.deleteById(id);
+    }
+    public void actualizar(Libro libro) {
+        repository.save(libro);
     }
 
     public List<Libro> findAll() {
