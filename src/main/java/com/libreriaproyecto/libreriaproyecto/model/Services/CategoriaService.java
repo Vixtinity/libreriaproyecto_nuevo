@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.CategoriaRepository;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Categoria;
+import com.libreriaproyecto.libreriaproyecto.model.Entities.Libro;
 
 @Service
 public class CategoriaService {
@@ -23,14 +24,19 @@ public class CategoriaService {
         repository.deleteById(id);
     }
 
+    public void actualizar(Categoria categoria) {
+        repository.save(categoria);
+    }
+
     public Categoria findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
+
     public void eliminarCategoria(Integer id) {
         repository.deleteById(id);
     }
 
-        public void saveAll(List<Categoria> categorias) {
+    public void saveAll(List<Categoria> categorias) {
         repository.saveAll(categorias);
     }
 }

@@ -1,4 +1,3 @@
-/* Estilo general del cuerpo */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -6,7 +5,6 @@ body {
     padding: 0;
 }
 
-/* Encabezado de la página */
 h2 {
     color: #333;
     text-align: center;
@@ -14,7 +12,6 @@ h2 {
     font-size: 24px;
 }
 
-/* Contenedor principal */
 .container {
     width: 90%;
     margin: 0 auto;
@@ -23,7 +20,6 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo de los formularios */
 form {
     margin-bottom: 30px;
     padding: 20px;
@@ -60,7 +56,6 @@ form button:hover {
     background-color: #45a049;
 }
 
-/* Estilo de las tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -87,7 +82,7 @@ table tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Enlaces de acción */
+
 a {
     color: #007BFF;
     text-decoration: none;
@@ -98,7 +93,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Botones de acción */
+
 button {
     background-color: #007BFF;
     color: white;
@@ -112,7 +107,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Estilo para los botones de eliminar con confirmación */
+
 a[onclick] {
     background-color: #FF4C4C;
     color: white;
@@ -124,12 +119,11 @@ a[onclick]:hover {
     background-color: #e63946;
 }
 
-/* Secciones */
+
 section {
     margin-bottom: 40px;
 }
 
-/* Estilos para el contenedor de las tablas */
 table.striped {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -147,4 +141,12 @@ table.striped {
 .striped td:hover {
     background-color: #f9f9f9;
 }
+nav {
+    background-color: #131c25;
+    color: #ffffff !important;
+}
+nav a:hover {
+    background-color: #bdbdbd;
+    color: white !important;
 
+}

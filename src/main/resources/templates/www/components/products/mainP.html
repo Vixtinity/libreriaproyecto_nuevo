@@ -8,6 +8,7 @@
                         <div class="card-body">
                             <h5 class="card-title" th:text="${libro.titulo}"></h5>
                             <p class="card-text"><strong>Autor:</strong> <span th:text="${libro.autor.nombre}"></span></p>
+                            <p class="card-text"><strong>Categproa:</strong><span th:text="${libro.categoria.nombre}"></span></p>
                             <p class="card-text"><strong>Precio:</strong> <span th:text="${libro.precio} + ' €'"></span></p>
                         </div>
                         <div class="card-footer text-center">

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.AutorRepository;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Autor;
+import com.libreriaproyecto.libreriaproyecto.model.Entities.Categoria;
 
 @Service
 public class AutorService {
@@ -26,7 +27,9 @@ public class AutorService {
     public void eliminarAutor(Integer id) {
         repository.deleteById(id);
     }
-
+      public void actualizar(Autor autor) {
+        repository.save(autor);
+    }
     public Autor findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
