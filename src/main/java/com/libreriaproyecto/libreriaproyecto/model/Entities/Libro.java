@@ -26,7 +26,6 @@ public class Libro {
     private int id;
     @Column(name = "titulo")
     private String titulo;
-
     
     @ManyToOne
     @JoinColumn(name = "id_autor")
@@ -39,10 +38,14 @@ public class Libro {
     @Column(name = "precio")
     private double precio;
 
-    public Libro(String titulo, Autor autor, Categoria categoria, double precio) {
+    @Column(name = "imagen")
+    private String imagen;
+
+    public Libro(String titulo, Autor autor, Categoria categoria, double precio, String imagen) {
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
         this.precio = precio;
+        this.imagen = imagen;
     }
 }

@@ -26,6 +26,12 @@ public class UsuariosController {
         usuarioService.eliminarUsuario(id);
         return "redirect:/admin";
     }
+    @PostMapping("/crear")
+    public String crearUsuario(@ModelAttribute Usuario usuario) {
+        usuarioService.guardar(usuario);
+        return "redirect:/admin";
+    }
+    
     @GetMapping("/categorias")
     public String getUsuarios(Model modelo) {
         List<Usuario> usuario = this.usuarioService.findAll();

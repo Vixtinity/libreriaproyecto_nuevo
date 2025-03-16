@@ -25,6 +25,10 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    public void guardar(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
 
     public void delete(Integer id) {
         this.usuarioRepository.deleteById(id);  // Utilizar el repositorio inyectado

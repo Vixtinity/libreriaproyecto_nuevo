@@ -1,21 +1,23 @@
 <main th:fragment="mainP">
-        <div class="container mt-4">
-            <h2 class="text-center">Lista de Libros</h2>
-            <div class="row">
-                <!-- Iterar sobre la lista de libros -->
-                <div class="col-md-4 mb-4" th:each="libro : ${libros}">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${libro.titulo}"></h5>
-                            <p class="card-text"><strong>Autor:</strong> <span th:text="${libro.autor.nombre}"></span></p>
-                            <p class="card-text"><strong>Categproa:</strong><span th:text="${libro.categoria.nombre}"></span></p>
-                            <p class="card-text"><strong>Precio:</strong> <span th:text="${libro.precio} + ' €'"></span></p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Ver detalles</a>
-                        </div>
+    <div class="container mt-4">
+        <h2 class="text-center">Lista de Libros</h2>
+        <div class="row">
+            <!-- Iterar sobre la lista de libros -->
+            <div class="col-md-4 mb-4" th:each="libro : ${libros}">
+                <div class="card h-100">
+                    <!-- Mostrar la imagen -->
+                    <img th:src="${libro.imagen}" class="card-img-top" alt="Imagen del libro">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${libro.titulo}"></h5>
+                        <p class="card-text"><strong>Autor:</strong> <span th:text="${libro.autor.nombre}"></span></p>
+                        <p class="card-text"><strong>Categoría:</strong> <span th:text="${libro.categoria.nombre}"></span></p>
+                        <p class="card-text"><strong>Precio:</strong> <span th:text="${libro.precio} + ' €'"></span></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-primary">Ver detalles</a>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
+    </div>  
 </main>

@@ -13,17 +13,17 @@ import com.libreriaproyecto.libreriaproyecto.model.Services.UsuarioService;
 public class LoginController {
 
     @Autowired
-    private UsuarioService usuarioService; // Suponiendo que tienes un servicio para gestionar usuarios
+    private UsuarioService usuarioService;
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login"; // Nombre del archivo HTML del formulario de login
+        return "login";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam String nombre, @RequestParam String password) {
         Usuario usuario = usuarioService.findByNombre(nombre);
-
+// Ve si el usuario existe y si la contraseña ingresada es correcta
         if (usuario != null && password.equals(usuario.getPassword())) {
             if ("admin".equals(usuario.getRol())) {
                 return "redirect:/admin";

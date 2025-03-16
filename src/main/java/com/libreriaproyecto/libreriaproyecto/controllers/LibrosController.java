@@ -34,6 +34,12 @@ public class LibrosController {
         libroService.actualizar(libro);
         return "redirect:/admin";
     }
+    @PostMapping("/guardar")
+    public String guardarLibro(@ModelAttribute Libro libro) {
+        libroService.guardar(libro);
+        return "redirect:/admin";  // Redirige a la página de administración después de guardar
+    }
+    
     @GetMapping("/libros")
     public String mostrarLibros(Model model) {
         List<Libro> libros = libroRepository.findAll(); // Esto obtiene todos los libros desde la base de datos

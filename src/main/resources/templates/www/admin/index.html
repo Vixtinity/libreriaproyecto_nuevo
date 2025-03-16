@@ -56,6 +56,11 @@
                             <label for="editPrecio" class="form-label">Precio:</label>
                             <input type="number" class="form-control" id="editPrecio" name="precio" step="0.01">
                         </div>
+                        <div class="mb-3">
+                            <label for="editImagen" class="form-label">Imagen:</label>
+                            <input type="file" class="form-control" id="editImagen" name="imagen" accept="image/*">
+                        </div>
+                        </div>
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </form>
                 </div>
@@ -97,6 +102,7 @@
                     <th>ID Autor</th>
                     <th>ID Categoría</th>
                     <th>Precio</th>
+                    <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -108,10 +114,13 @@
                     <td th:text="${libro.categoria.id}"></td>
                     <td th:text="${libro.precio}"></td>
                     <td>
+                        <img th:src="@{${libro.imagen}}" alt="Imagen del libro" style="width: 100px; height: auto;"/>
+                    </td>
+                    <td>
                         <button type="button" class="btn btn-warning edit-btn"
                         th:attr="data-id=${libro.id}, data-titulo=${libro.titulo}, 
                         data-autor=${libro.autor.id}, data-categoria=${libro.categoria.id},
-                        data-precio=${libro.precio}" data-bs-toggle="modal" data-bs-target="#editModal">
+                        data-precio=${libro.precio}, data-imagen=${libro.imagen}" data-bs-toggle="modal" data-bs-target="#editModal">
                         Editar
                     </button>
                     
@@ -192,18 +201,19 @@
         </table>
     </section>
     <section id="autor">
-        <h2>Listado de Autores</h2>
-        <a th:href="@{/autor/nueva}" class="btn btn-success">Añadir Autor</a>
+        <h2>Listado de Usuarios</h2>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearUsuarioModal">
+            Crear Usuario
+        </button>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Direccion</th>
+                    <th>Dirección</th>
                     <th>Email</th>
                     <th>Nombre</th>
-                    <th>Password</th>
                     <th>Tipo de usuario</th>
-                    <th>Numero de telefono</th>
+                    <th>Teléfono</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -213,135 +223,166 @@
                     <td th:text="${usuario.direccion}"></td>
                     <td th:text="${usuario.email}"></td>
                     <td th:text="${usuario.nombre}"></td>
-                    <td th:text="${usuario.password}"></td>
                     <td th:text="${usuario.rol}"></td>
                     <td th:text="${usuario.telefono}"></td>
                     <td>
                         <button type="button" class="btn btn-warning edit-usuario-btn"
-                            th:attr="data-id=${usuario.id}, data-nombre=${usuario.nombre}" 
-                            data-bs-toggle="modal" data-bs-target="#editUsuarioModal">
+                            data-bs-toggle="modal" data-bs-target="#editUsuarioModal"
+                            th:attr="data-id=${usuario.id}, data-nombre=${usuario.nombre}, data-email=${usuario.email},
+                                      data-direccion=${usuario.direccion}, data-rol=${usuario.rol}, data-telefono=${usuario.telefono}">
                             Editar
                         </button>
                         <a th:href="@{/usuario/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger"
-                            onclick="return confirm('¿Seguro que deseas eliminar este autor?');">
+                            onclick="return confirm('¿Seguro que deseas eliminar este usuario?');">
                             Eliminar
                         </a>
                     </td>
                 </tr>
+            </tbody>
+        </table>
     </section>
-
-
-    <!-- Modal para editar Usuario -->
-<div class="modal fade" id="editUsuarioModal" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editUsuarioModalLabel">Editar Usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Formulario para editar los datos del usuario -->
-                <form th:action="@{/usuario/actualizar}" method="post">
-                    <div class="mb-3">
-                        <label for="editDireccion" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="editDireccion" name="direccion" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="editEmail" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="editNombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="editPassword" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editRol" class="form-label">Rol</label>
-                        <select class="form-select" id="editRol" name="rol" required>
-                            <option value="USER">Usuario</option>
-                            <option value="ADMIN">Administrador</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editTelefono" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" id="editTelefono" name="telefono" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
     
-<!-- Modal para Editar Autor -->
-<div class="modal fade" id="editAutorModal" tabindex="-1" aria-labelledby="editAutorModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editAutorModalLabel">Editar Autor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editAutorForm" th:action="@{/autor/actualizar}" method="post">
-                    <input type="hidden" id="editAutorId" name="id">
-                    <div class="mb-3">
-                        <label for="editAutorNombre" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" id="editAutorNombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editAutorFecha" class="form-label">Fecha de Nacimiento:</label>
-                        <input type="date" class="form-control" id="editAutorFecha" name="fechaNacimiento" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editAutorNacionalidad" class="form-label">Nacionalidad:</label>
-                        <input type="text" class="form-control" id="editAutorNacionalidad" name="nacionalidad" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                </form>
+    <!-- Modal para Crear Usuario -->
+    <div class="modal fade" id="crearUsuarioModal" tabindex="-1" aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="crearUsuarioModalLabel">Crear Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/usuario/crear}" method="post">
+                        <div class="mb-3">
+                            <label for="crearNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="crearNombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="crearEmail" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearDireccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="crearDireccion" name="direccion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearRol" class="form-label">Rol</label>
+                            <select class="form-select" id="crearRol" name="rol" required>
+                                <option value="usuario">Usuario</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearTelefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="crearTelefono" name="telefono" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
+    <!-- Modal para Editar Usuario -->
+    <div class="modal fade" id="editUsuarioModal" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUsuarioModalLabel">Editar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/usuario/actualizar}" method="post">
+                        <input type="hidden" id="editUsuarioId" name="id">
+                        <div class="mb-3">
+                            <label for="editNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editNombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDireccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="editDireccion" name="direccion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editRol" class="form-label">Rol</label>
+                            <select class="form-select" id="editRol" name="rol" required>
+                                <option value="usuario">Usuario</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTelefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="editTelefono" name="telefono" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // Handling modal form population for books, categories, authors, and users
+    // Manejar la carga de datos en los modales de edición
     document.querySelectorAll("[data-bs-toggle='modal']").forEach(button => {
         button.addEventListener("click", function () {
-            const modalId = this.getAttribute("data-bs-target").substring(1); // Remove "#" to get the modal ID
+            const modalId = this.getAttribute("data-bs-target").substring(1);
             const modal = document.getElementById(modalId);
 
-            // Handle different modal types based on the modal ID
-            if (modalId === "editModal") { // Book edit modal
-                document.getElementById("editId").value = this.getAttribute("data-id");
-                document.getElementById("editTitulo").value = this.getAttribute("data-titulo");
-                document.getElementById("editAutor").value = this.getAttribute("data-autor");
-                document.getElementById("editCategoria").value = this.getAttribute("data-categoria");
-                document.getElementById("editPrecio").value = this.getAttribute("data-precio");
-            } else if (modalId === "editCategoriaModal") { // Category edit modal
-                document.getElementById("editCategoriaId").value = this.getAttribute("data-id");
-                document.getElementById("editCategoriaNombre").value = this.getAttribute("data-nombre");
-            } else if (modalId === "editAutorModal") { // Author edit modal
-                document.getElementById("editAutorId").value = this.getAttribute("data-id");
-                document.getElementById("editAutorNombre").value = this.getAttribute("data-nombre");
-                document.getElementById("editAutorFecha").value = this.getAttribute("data-fechaNacimiento");
-                document.getElementById("editAutorNacionalidad").value = this.getAttribute("data-nacionalidad");
-            } else if (modalId === "editUsuarioModal") { // User edit modal
-                document.getElementById("editUsuarioId").value = this.getAttribute("data-id");
-                document.getElementById("editDireccion").value = this.getAttribute("data-direccion");
-                document.getElementById("editEmail").value = this.getAttribute("data-email");
-                document.getElementById("editNombre").value = this.getAttribute("data-nombre");
-                document.getElementById("editPassword").value = this.getAttribute("data-password");
-                document.getElementById("editRol").value = this.getAttribute("data-rol");
-                document.getElementById("editTelefono").value = this.getAttribute("data-telefono");
+            if (!modal) return;
+
+            switch (modalId) {
+                case "editModal": // Modal de edición de libros
+                    setValue("editId", this.getAttribute("data-id"));
+                    setValue("editTitulo", this.getAttribute("data-titulo"));
+                    setValue("editAutor", this.getAttribute("data-autor"));
+                    setValue("editCategoria", this.getAttribute("data-categoria"));
+                    setValue("editPrecio", this.getAttribute("data-precio"));
+                    
+                    // Manejo de imagen
+                    let imagenSrc = this.getAttribute("data-imagen");
+                    if (imagenSrc) {
+                        let imgElement = document.getElementById("currentImage");
+                        if (imgElement) imgElement.src = imagenSrc;
+                    }
+                    break;
+
+                case "editCategoriaModal": // Modal de edición de categorías
+                    setValue("editCategoriaId", this.getAttribute("data-id"));
+                    setValue("editCategoriaNombre", this.getAttribute("data-nombre"));
+                    break;
+
+                case "editAutorModal": // Modal de edición de autores
+                    setValue("editAutorId", this.getAttribute("data-id"));
+                    setValue("editAutorNombre", this.getAttribute("data-nombre"));
+                    setValue("editAutorFecha", this.getAttribute("data-fechaNacimiento"));
+                    setValue("editAutorNacionalidad", this.getAttribute("data-nacionalidad"));
+                    break;
+
+                case "editUsuarioModal": // Modal de edición de usuarios
+                    setValue("editUsuarioId", this.getAttribute("data-id"));
+                    setValue("editDireccion", this.getAttribute("data-direccion"));
+                    setValue("editEmail", this.getAttribute("data-email"));
+                    setValue("editNombre", this.getAttribute("data-nombre"));
+                    setValue("editPassword", this.getAttribute("data-password"));
+                    
+                    let editRol = document.getElementById("editRol");
+                    if (editRol) editRol.value = this.getAttribute("data-rol");
+
+                    setValue("editTelefono", this.getAttribute("data-telefono"));
+                    break;
             }
         });
     });
+
+    // Función auxiliar para evitar errores si el elemento no existe
+    function setValue(id, value) {
+        let element = document.getElementById(id);
+        if (element) element.value = value;
+    }
 });
 
 </script>

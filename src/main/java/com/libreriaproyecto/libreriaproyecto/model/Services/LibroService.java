@@ -33,6 +33,9 @@ public class LibroService {
     public void delete(Integer id) {
         repository.deleteById(id);
     }
+    public void guardar(Libro libro) {
+        repository.save(libro);
+    }
 
     public Libro findById(Integer id) {
         return repository.findById(id).orElse(null);
