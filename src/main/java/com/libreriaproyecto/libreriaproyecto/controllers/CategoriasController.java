@@ -33,6 +33,12 @@ public class CategoriasController {
         categoriaService.actualizar(categoria);
         return "redirect:/admin";
     }
+@PostMapping("/crear")
+public String crearUsuario(@ModelAttribute Categoria categoria) {
+    categoriaService.guardar(categoria);
+    return "redirect:/admin";
+}
+
 
     @GetMapping("/categorias")
     public String getCategorias(Model modelo) {

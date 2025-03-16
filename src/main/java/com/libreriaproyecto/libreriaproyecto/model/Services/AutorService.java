@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.libreriaproyecto.libreriaproyecto.model.Repositories.AutorRepository;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Autor;
 import com.libreriaproyecto.libreriaproyecto.model.Entities.Categoria;
+import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
 
 @Service
 public class AutorService {
@@ -30,6 +31,10 @@ public class AutorService {
       public void actualizar(Autor autor) {
         repository.save(autor);
     }
+        public void guardar(Autor autor) {
+        repository.save(autor);
+    }
+    
     public Autor findById(Integer id) {
         return repository.findById(id).orElse(null);
     }

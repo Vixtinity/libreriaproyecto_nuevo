@@ -10,6 +10,7 @@
 
     import com.libreriaproyecto.libreriaproyecto.model.Services.AutorService;
     import com.libreriaproyecto.libreriaproyecto.model.Entities.Autor;
+    import com.libreriaproyecto.libreriaproyecto.model.Entities.Usuario;
 
 
     @Controller
@@ -22,6 +23,11 @@
             autorService.eliminarAutor(id);
             return "redirect:/admin";
         }   
+            @PostMapping("/crear")
+    public String crearUsuario(@ModelAttribute Autor autor) {
+        autorService.guardar(autor);
+        return "redirect:/admin";
+    }
 
     @PostMapping("/actualizar")
         public String actualizarAutor(@ModelAttribute Autor autor) {

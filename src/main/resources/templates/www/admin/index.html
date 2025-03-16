@@ -28,6 +28,86 @@
             </li>
         </ul>
     </nav>
+    <!--============================================================================================================================================ -->
+    <!-- AUTORES -->
+    <!--============================================================================================================================================ -->
+<!-- Sección de Libros -->
+<section id="libros">
+    <h2>Listado de Libros</h2>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearLibroModal">
+        Crear Libro
+    </button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>ID Autor</th>
+                <th>ID Categoría</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="libro : ${libros}">
+                <td th:text="${libro.id}"></td>
+                <td th:text="${libro.titulo}"></td>
+                <td th:text="${libro.autor.id}"></td>
+                <td th:text="${libro.categoria.id}"></td>
+                <td th:text="${libro.precio}"></td>
+                <td>
+                    <img th:src="@{${libro.imagen}}" alt="Imagen del libro" style="width: 100px; height: auto;"/>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning edit-btn"
+                    th:attr="data-id=${libro.id}, data-titulo=${libro.titulo}, 
+                    data-autor=${libro.autor.id}, data-categoria=${libro.categoria.id},
+                    data-precio=${libro.precio}, data-imagen=${libro.imagen}" data-bs-toggle="modal" data-bs-target="#editModal">
+                    Editar
+                </button>
+                
+                    <a th:href="@{/libro/eliminar/{id}(id=${libro.id})}" class="btn btn-danger"
+                        onclick="return confirm('¿Seguro que deseas eliminar este libro?');">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<!-- Modal para crear Libro -->
+<div class="modal fade" id="crearLibroModal" tabindex="-1" aria-labelledby="crearLibroModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearLibroModalLabel">Crear Libro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/libro/crear}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="crearTitulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="crearTitulo" name="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="crearIdAutor" class="form-label">ID Autor</label>
+                        <input type="number" class="form-control" id="crearIdAutor" name="autorId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="crearIdCategoria" class="form-label">ID Categoría</label>
+                        <input type="number" class="form-control" id="crearIdCategoria" name="categoriaId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="crearPrecio" class="form-label">Precio</label>
+                        <input type="number" step="0.01" class="form-control" id="crearPrecio" name="precio" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Libro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Modal para Editar Libro -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -67,7 +147,8 @@
             </div>
         </div>
     </div>
-
+<!--============================================================================================================================================ -->
+<!--============================================================================================================================================ -->
     <!-- Modal para Editar Categoría -->
     <div class="modal fade" id="editCategoriaModal" tabindex="-1" aria-labelledby="editCategoriaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -90,49 +171,6 @@
         </div>
     </div>
 
-    <!-- Sección de Libros -->
-    <section id="libros">
-        <h2>Listado de Libros</h2>
-        <a th:href="@{/libro/nuevo}" class="btn btn-success">Añadir Libro</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>ID Autor</th>
-                    <th>ID Categoría</th>
-                    <th>Precio</th>
-                    <th>Imagen</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="libro : ${libros}">
-                    <td th:text="${libro.id}"></td>
-                    <td th:text="${libro.titulo}"></td>
-                    <td th:text="${libro.autor.id}"></td>
-                    <td th:text="${libro.categoria.id}"></td>
-                    <td th:text="${libro.precio}"></td>
-                    <td>
-                        <img th:src="@{${libro.imagen}}" alt="Imagen del libro" style="width: 100px; height: auto;"/>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-warning edit-btn"
-                        th:attr="data-id=${libro.id}, data-titulo=${libro.titulo}, 
-                        data-autor=${libro.autor.id}, data-categoria=${libro.categoria.id},
-                        data-precio=${libro.precio}, data-imagen=${libro.imagen}" data-bs-toggle="modal" data-bs-target="#editModal">
-                        Editar
-                    </button>
-                    
-                        <a th:href="@{/libro/eliminar/{id}(id=${libro.id})}" class="btn btn-danger"
-                            onclick="return confirm('¿Seguro que deseas eliminar este libro?');">
-                            Eliminar
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
 
     <!-- Sección de Categorías -->
     <section id="categorias">
@@ -200,6 +238,49 @@
             </tbody>
         </table>
     </section>
+
+    <div class="modal fade" id="crearUsuarioModal" tabindex="-1" aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="crearUsuarioModalLabel">Crear Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/usuario/crear}" method="post">
+                        <div class="mb-3">
+                            <label for="crearNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="crearNombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="crearEmail" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearDireccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="crearDireccion" name="direccion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearRol" class="form-label">Rol</label>
+                            <select class="form-select" id="crearRol" name="rol" required>
+                                <option value="usuario">Usuario</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crearTelefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="crearTelefono" name="telefono" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--============================================================================================================================================ -->
+    <!-- AUTORES -->
+    <!--============================================================================================================================================ -->
     <section id="autor">
         <h2>Listado de Usuarios</h2>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearUsuarioModal">
@@ -322,7 +403,8 @@
             </div>
         </div>
     </div>
-
+<!--============================================================================================================================================ -->
+<!--============================================================================================================================================ -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
